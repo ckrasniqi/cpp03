@@ -1,6 +1,6 @@
 NAME = Aaaaand...OPEN!
 
-SRCS =  main.cpp
+SRCS =  main.cpp Claptrap.cpp
 OBJS = $(SRCS:.cpp=.o)
 
 CXX = c++
