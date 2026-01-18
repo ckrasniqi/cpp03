@@ -9,7 +9,7 @@ _attackDamage(0) {
 }
 
 
-ClapTrap::ClapTrap(std::string name) :
+ClapTrap::ClapTrap( std::string name ) :
 _name(name),
 _hitPoints(10),
 _energyPoints(10),
@@ -22,7 +22,7 @@ ClapTrap::ClapTrap( const ClapTrap &other ){
 	*this = other;
 }
 
-ClapTrap &ClapTrap::operator=(const ClapTrap &other){
+ClapTrap &ClapTrap::operator=( const ClapTrap &other ){
 	std::cout << "Copy assignment operator called" << std::endl;
 	if (this != &other){
 		this->_name = other._name;
@@ -33,7 +33,7 @@ ClapTrap &ClapTrap::operator=(const ClapTrap &other){
 	return *this;
 }
 
-void ClapTrap::attack(const std::string &target){
+void ClapTrap::attack( const std::string &target ){
 	if (_hitPoints == 0){
 		std::cout << "ClapTrap " << _name << " is dead and cannot attack!" << std::endl;
 		return;
@@ -49,7 +49,7 @@ void ClapTrap::attack(const std::string &target){
 	_energyPoints--;
 }
 
-void ClapTrap::takeDamage(unsigned int amount){
+void ClapTrap::takeDamage( unsigned int amount ){
 	if (_hitPoints == 0){
 		std::cout << "ClapTrap " << _name << " is dead and cannot attack!" << std::endl;
 		return;
@@ -68,7 +68,7 @@ void ClapTrap::takeDamage(unsigned int amount){
 	_hitPoints = 0;
 }
 
-void ClapTrap::beRepaired(unsigned int amount){
+void ClapTrap::beRepaired( unsigned int amount ){
 	if (_hitPoints == 0){
 		std::cout << "ClapTrap " << _name << " is dead and cannot attack!" << std::endl;
 		return;
