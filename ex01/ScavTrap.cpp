@@ -2,7 +2,8 @@
 #include "ClapTrap.hpp"
 
 ScavTrap::ScavTrap() : ClapTrap("Default"){
-	_name = "ScavTrap";
+	_type = "Default";
+	_name = "Default";
 	_hitPoints = 100;
 	_energyPoints = 50;
 	_attackDamage = 20;
@@ -11,6 +12,7 @@ ScavTrap::ScavTrap() : ClapTrap("Default"){
 
 ScavTrap::ScavTrap( std::string name ) : ClapTrap(name){
 	// _name = name; ClapTrap is doing this one and we don't need to do it twice
+	_type = "ScavTrap";
 	_hitPoints = 100;
 	_energyPoints = 50;
 	_attackDamage = 20;
