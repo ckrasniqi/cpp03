@@ -26,5 +26,24 @@ int main(){
 	scav.takeDamage(30);
 	scav.beRepaired(10);
 	scav.guardGate();
+
+
+	printHeader("ENERGY DEPLETION TEST");
+	ClapTrap weakling("Weakling");
+	std::cout << "Weakling tries to attack 11 times (Energy is 10)..." << std::endl;
+	for (int i = 0; i < 11; i++) {
+		weakling.attack("the air");
+	}
+	weakling.beRepaired(5);
+
+	printHeader("DEATH & RESILIENCE TEST");
+	ScavTrap target("TargetBot");
+	target.takeDamage(99);
+	target.beRepaired(1);
+	target.takeDamage(100);
+	target.attack("the attacker");
+	target.beRepaired(10);
+	target.guardGate();
+
 	return 0;
 }
