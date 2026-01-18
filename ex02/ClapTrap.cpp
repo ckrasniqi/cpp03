@@ -19,9 +19,13 @@ _attackDamage(0) {
 	std::cout << "ClapTrap's default constructor called!" << std::endl;
 }
 
-ClapTrap::ClapTrap( const ClapTrap &other ){
+ClapTrap::ClapTrap( const ClapTrap &other ) :
+_type(other._type),
+_name(other._name),
+_hitPoints(other._hitPoints),
+_energyPoints(other._energyPoints),
+_attackDamage(other._attackDamage) {
 	std::cout << "ClapTrap's copy constructor called" << std::endl;
-	*this = other;
 }
 
 ClapTrap &ClapTrap::operator=( const ClapTrap &other ){
