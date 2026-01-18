@@ -1,0 +1,61 @@
+#include "FragTrap.hpp"
+#include "ClapTrap.hpp"
+
+FragTrap::FragTrap() : ClapTrap("Default"){
+	_type = "Default";
+	_name = "Default";
+	_hitPoints = 100;
+	_energyPoints = 50;
+	_attackDamage = 20;
+	std::cout << "FragTrap's default constructor called!" << std::endl;
+}
+
+FragTrap::FragTrap( std::string name ) : ClapTrap(name){
+	// _name = name; ClapTrap is doing this one and we don't need to do it twice
+	_type = "FragTrap";
+	_hitPoints = 100;
+	_energyPoints = 50;
+	_attackDamage = 20;
+	std::cout << "FragTrap's default constructor called!" << std::endl;
+}
+
+FragTrap::FragTrap( const FragTrap &other ) : ClapTrap(other){
+	std::cout << "FragTrap's copy constructor called" << std::endl;
+	*this = other;
+}
+
+FragTrap &FragTrap::operator=( const FragTrap &other ){
+	std::cout << "FragTrap's copy assignment operator called" << std::endl;
+	if (this != &other){
+		ClapTrap::operator=(other);
+	}
+	return *this;
+}
+
+void FragTrap::attack( const std::string &target ){
+	if (_hitPoints == 0){
+		std::cout << _name << " is dead and cannot attack!" << std::endl;
+		return;
+	}
+	if (_energyPoints == 0){
+		std::cout << _name << " has insufficient amount of Energy points" << std::endl;
+		std::cout << "Amount of Energy points: " << _energyPoints << std::endl;
+		return;
+	}
+	std::cout << _name << " attacks "
+			  << target << ", causing " << _attackDamage
+			  << " points of damage!" << std::endl;
+	_energyPoints--;
+}
+
+void FragTrap::highFivesGuys( void ){
+	if (this->_hitPoints == 0) {
+		std::cout << _type << _name << " is too dead to high-five anyone." << std::endl;
+		return;
+	}
+	std::cout << _type << this->_name << " says: \"High five, everyone! Up top!\" ✋" << std::endl;
+}
+
+FragTrap::~FragTrap(){
+	std::cout << "FragTrap's destructor called!" << std::endl;
+}
