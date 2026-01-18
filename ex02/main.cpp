@@ -1,5 +1,6 @@
 #include "ClapTrap.hpp"
 #include "ScavTrap.hpp"
+#include "FragTrap.hpp"
 
 void printHeader( std::string title ){
 	std::cout << "\n==========================================" << std::endl;
@@ -19,7 +20,6 @@ int main(){
 	ScavTrap scav("Scav-V");
 	ClapTrap clap("Clap-C");
 
-
 	scav.attack("a training dummy");
 	clap.attack("the same dummy");
 
@@ -27,6 +27,14 @@ int main(){
 	scav.beRepaired(10);
 	scav.guardGate();
 
+	printHeader("FRAGTRAP TESTS");
+	FragTrap frag("Fraggy");
+	frag.attack("a concrete wall");
+	frag.highFivesGuys();
+	frag.takeDamage(50);
+	frag.beRepaired(20);
+	frag.takeDamage(100);
+	frag.highFivesGuys();
 
 	printHeader("ENERGY DEPLETION TEST");
 	ClapTrap weakling("Weakling");
@@ -49,12 +57,12 @@ int main(){
 	ScavTrap original("Original");
 	original.takeDamage(50);
 
-	std::cout << "--- Testing Copy Constructor ---" << std::endl;
+	std::cout << "\n--- Testing Copy Constructor ---" << std::endl;
 	ScavTrap copy(original);
 	std::cout << "Copy attacks to verify it inherited attributes correctly:" << std::endl;
 	copy.attack("a clone");
 
-	std::cout << "--- Testing Assignment Operator ---" << std::endl;
+	std::cout << "\n--- Testing Assignment Operator ---" << std::endl;
 	ScavTrap assigned("Newbie");
 	assigned = original;
 	assigned.guardGate();

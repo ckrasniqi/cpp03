@@ -5,23 +5,21 @@ FragTrap::FragTrap() : ClapTrap("Default"){
 	_type = "Default";
 	_name = "Default";
 	_hitPoints = 100;
-	_energyPoints = 50;
-	_attackDamage = 20;
+	_energyPoints = 100;
+	_attackDamage = 30;
 	std::cout << "FragTrap's default constructor called!" << std::endl;
 }
 
 FragTrap::FragTrap( std::string name ) : ClapTrap(name){
-	// _name = name; ClapTrap is doing this one and we don't need to do it twice
 	_type = "FragTrap";
 	_hitPoints = 100;
-	_energyPoints = 50;
-	_attackDamage = 20;
+	_energyPoints = 100;
+	_attackDamage = 30;
 	std::cout << "FragTrap's default constructor called!" << std::endl;
 }
 
 FragTrap::FragTrap( const FragTrap &other ) : ClapTrap(other){
 	std::cout << "FragTrap's copy constructor called" << std::endl;
-	*this = other;
 }
 
 FragTrap &FragTrap::operator=( const FragTrap &other ){
@@ -49,11 +47,11 @@ void FragTrap::attack( const std::string &target ){
 }
 
 void FragTrap::highFivesGuys( void ){
-	if (this->_hitPoints == 0) {
-		std::cout << _type << _name << " is too dead to high-five anyone." << std::endl;
+	if (_hitPoints == 0) {
+		std::cout << _type << ": " << _name << " is too dead to high-five anyone." << std::endl;
 		return;
 	}
-	std::cout << _type << this->_name << " says: \"High five, everyone! Up top!\" ✋" << std::endl;
+	std::cout << _type << ": " << _name << " says: High five, everyone! Up top! ✋" << std::endl;
 }
 
 FragTrap::~FragTrap(){
