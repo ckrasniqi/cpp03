@@ -1,20 +1,30 @@
 #include "ClapTrap.hpp"
 #include "ScavTrap.hpp"
 
-int main(){
-	ClapTrap clap("RoboCop");
-	ScavTrap scav("Guard");
+void printHeader( std::string title ){
+	std::cout << "\n==========================================" << std::endl;
+	std::cout << "         " << title << std::endl;
+	std::cout << "==========================================" << std::endl;
+}
 
-	clap.attack("a handsome bully");
-	scav.attack("a threat to the gate");
-	clap.takeDamage(5);
-	scav.takeDamage(4);
-	clap.beRepaired(5);
-	scav.beRepaired(4);
-	clap.takeDamage(10);
-	scav.takeDamage(10);
-	clap.attack("the same bully");
+int main(){
+
+	printHeader("CONSTRUCTION CHAINING");
+	{
+		std::cout << "--- Creating a ScavTrap named 'Serena' ---" << std::endl;
+		ScavTrap scav("Serena");
+	}
+
+	printHeader("BASIC FUNCTIONALITY & STATS");
+	ScavTrap scav("Scav-V");
+	ClapTrap clap("Clap-C");
+
+
+	scav.attack("a training dummy");
+	clap.attack("the same dummy");
+
+	scav.takeDamage(30);
+	scav.beRepaired(10);
 	scav.guardGate();
-	clap.takeDamage(2);
 	return 0;
 }
