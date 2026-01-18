@@ -1,5 +1,5 @@
-#ifndef FRAGTRAPP_HPP
-#define FRAGTRAPP_HPP
+#ifndef FRAGTRAP_HPP
+#define FRAGTRAP_HPP
 
 #include "ClapTrap.hpp"
 
