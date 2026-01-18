@@ -45,5 +45,21 @@ int main(){
 	target.beRepaired(10);
 	target.guardGate();
 
+	printHeader("ORTHODOX CANONICAL FORM TEST");
+	ScavTrap original("Original");
+	original.takeDamage(50);
+
+	std::cout << "--- Testing Copy Constructor ---" << std::endl;
+	ScavTrap copy(original);
+	std::cout << "Copy attacks to verify it inherited attributes correctly:" << std::endl;
+	copy.attack("a clone");
+
+	std::cout << "--- Testing Assignment Operator ---" << std::endl;
+	ScavTrap assigned("Newbie");
+	assigned = original;
+	assigned.guardGate();
+
+	printHeader("END OF TESTS - DESTRUCTORS INCOMING");
+
 	return 0;
 }
