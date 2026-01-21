@@ -11,68 +11,70 @@ void printHeader( std::string title ){
 
 int main(){
 
-	printHeader("CONSTRUCTION CHAINING");
+	printHeader("1. CONSTRUCTION & DESTRUCTION ORDER");
 	{
-		std::cout << "--- Creating a DiamondTrap named 'Diamond' ---" << std::endl;
-		DiamondTrap dia("Diamond");
+		std::cout << "--- Creating DiamondTrap 'D-03' ---" << std::endl;
+		std::cout << "Required: Clap -> Scav -> Frag -> Diamond" << std::endl;
+		DiamondTrap diamond("D-03");
+		std::cout << "\n--- Destruction starts here ---" << std::endl;
+		std::cout << "Required: Diamond -> Frag -> Scav -> Clap" << std::endl;
 	}
 
-	printHeader("BASIC FUNCTIONALITY & STATS");
-	ScavTrap scav("Scav-V");
-	ClapTrap clap("Clap-C");
-	DiamondTrap dia("Diamond2");
-
-	scav.attack("a training dummy");
-	clap.attack("the same dummy");
-	dia.attack("the wall"); //attacks with 30 points
-
-	printHeader("SCAVTRAP TESTS");
-	scav.takeDamage(30);
-	scav.beRepaired(10);
-	scav.guardGate();
-	scav.takeDamage(100);
-	scav.guardGate();
-
-	printHeader("DIAMONDTRAP TESTS");
-	dia.takeDamage(99);
-	dia.beRepaired(9);
-	dia.whoAmI();
-	dia.takeDamage(10);
-	dia.whoAmI();
-
-	printHeader("FRAGTRAP TESTS");
-	FragTrap frag("Fraggy");
-	frag.attack("a concrete wall");
-	frag.highFivesGuys();
-	frag.takeDamage(50);
-	frag.beRepaired(20);
-	frag.takeDamage(100);
-	frag.highFivesGuys();
-
-	printHeader("ENERGY DEPLETION TEST");
-	// DiamondTrap (50 energy Points), ScavTrap(50), FragTrap(100)
-	ClapTrap weakling("Weakling");
-	std::cout << "Weakling tries to attack 11 times (Energy is 10)..." << std::endl;
-	for (int i = 0; i < 11; i++) {
-		weakling.attack("the air");
+	printHeader("2. IDENTITY & WHOAMI TEST");
+	{
+		DiamondTrap diamond("Loki");
+		std::cout << "Required: Name should be 'Loki', Clap name 'Loki_clap_name'" << std::endl;
+		diamond.whoAmI();
 	}
-	weakling.beRepaired(5);
 
-	printHeader("ORTHODOX CANONICAL FORM TEST");
-	DiamondTrap original("Original");
-	original.takeDamage(50);
+	printHeader("3. STATS & ATTACK DELEGATION");
+	{
+		DiamondTrap diamond("Monster");
 
-	std::cout << "\n--- Testing Copy Constructor ---" << std::endl;
-	DiamondTrap copy(original);
-	std::cout << "Copy attacks to verify it inherited attributes correctly:" << std::endl;
-	copy.attack("a clone");
+		std::cout << "\n--- Testing ScavTrap::attack() delegation ---" << std::endl;
+		std::cout << "Look at the message below. It should look like ScavTrap's attack." << std::endl;
+		diamond.attack("a training dummy");
 
-	std::cout << "\n--- Testing Assignment Operator ---" << std::endl;
-	DiamondTrap assigned("Newbie");
-	assigned = original;
-	assigned.whoAmI();
+		std::cout << "\n--- Testing Energy Points (from ScavTrap: 50) ---" << std::endl;
+		std::cout << "Starting energy should be 50. Attacking 50 times..." << std::endl;
+		for (int i = 0; i < 50; ++i) {
+			diamond.attack("target");
+		}
+		std::cout << "The 51st attack should fail due to energy depletion:" << std::endl;
+		diamond.attack("one last target");
 
-	printHeader("END OF TESTS - DESTRUCTORS INCOMING");
+		std::cout << "\n--- Testing Hit Points (from FragTrap: 100) ---" << std::endl;
+		diamond.beRepaired(10); // Should fail due to energy, but if it had energy:
+		// Let's check death at 100.
+		diamond.takeDamage(99);
+		std::cout << "Should have 1 HP left." << std::endl;
+		diamond.takeDamage(1);
+		std::cout << "Should be dead now." << std::endl;
+		diamond.whoAmI(); // Should show death message if implemented
+	}
 
+	printHeader("4. SPECIAL ABILITIES INHERITANCE");
+	{
+		DiamondTrap diamond("Hybrid");
+		std::cout << "Can it guard the gate (Scav)? ";
+		diamond.guardGate();
+		std::cout << "Can it high five (Frag)? ";
+		diamond.highFivesGuys();
+	}
+
+	printHeader("5. ORTHODOX CANONICAL FORM");
+	{
+		DiamondTrap original("Alpha");
+		DiamondTrap copy(original);
+		DiamondTrap assigned("Beta");
+		assigned = original;
+
+		std::cout << "Original identity:" << std::endl;
+		original.whoAmI();
+		std::cout << "Copy identity:" << std::endl;
+		copy.whoAmI();
+		std::cout << "Assigned identity:" << std::endl;
+		assigned.whoAmI();
+	}
 	return 0;
 }
