@@ -19,6 +19,7 @@ DiamondTrap::DiamondTrap( std::string name ) : ClapTrap(name + "_clap_name"), Sc
 }
 
 DiamondTrap::DiamondTrap( const DiamondTrap &other ) : ClapTrap(other), ScavTrap(other), FragTrap(other){
+	*this = other;
 	std::cout << "DiamondTrap's copy constructor called" << std::endl;
 }
 
@@ -26,6 +27,7 @@ DiamondTrap &DiamondTrap::operator=( const DiamondTrap &other ){
 	std::cout << "DiamondTrap's copy assignment operator called" << std::endl;
 	if (this != &other){
 		ClapTrap::operator=(other);
+		this->_name = other._name;
 	}
 	return *this;
 }

@@ -40,7 +40,7 @@ void ScavTrap::guardGate(){
 		std::cout << _type << ": " << _name << " is dead and cannot guard the Gate!" << std::endl;
 		return;
 	}
-	std::cout << "ScavTrap is now in Gatekeeper mode." << std::endl;
+	std::cout << _type << ": " << _name << " is now in Gatekeeper mode." << std::endl;
 }
 
 ScavTrap::~ScavTrap(){
