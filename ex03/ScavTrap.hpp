@@ -2,8 +2,10 @@
 #define SCAVTRAP_HPP
 
 #include "ClapTrap.hpp"
+// by adding the virtual we tell the compiler to create a single
+// shared instance of ClapTrap
 
-class ScavTrap : public ClapTrap{
+class ScavTrap : virtual public ClapTrap{
 	public:
 		ScavTrap();
 		ScavTrap( std::string name );
