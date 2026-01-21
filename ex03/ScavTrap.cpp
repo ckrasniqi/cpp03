@@ -32,19 +32,7 @@ ScavTrap &ScavTrap::operator=( const ScavTrap &other ){
 }
 
 void ScavTrap::attack( const std::string &target ){
-	if (_hitPoints == 0){
-		std::cout << _name << " is dead and cannot attack!" << std::endl;
-		return;
-	}
-	if (_energyPoints == 0){
-		std::cout << _name << " has insufficient amount of Energy points" << std::endl;
-		std::cout << "Amount of Energy points: " << _energyPoints << std::endl;
-		return;
-	}
-	std::cout << _name << " attacks "
-			  << target << ", causing " << _attackDamage
-			  << " points of damage!" << std::endl;
-	_energyPoints--;
+	ClapTrap::attack(target);
 }
 
 void ScavTrap::guardGate(){
