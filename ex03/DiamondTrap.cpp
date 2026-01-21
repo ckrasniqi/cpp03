@@ -18,7 +18,7 @@ DiamondTrap::DiamondTrap( std::string name ) : ClapTrap(name + "_clap_name"), Sc
 	std::cout << "DiamondTrap's parameterized constructor called!" << std::endl;
 }
 
-DiamondTrap::DiamondTrap( const DiamondTrap &other ) : ClapTrap(other){
+DiamondTrap::DiamondTrap( const DiamondTrap &other ) : ClapTrap(other), ScavTrap(other), FragTrap(other){
 	std::cout << "DiamondTrap's copy constructor called" << std::endl;
 }
 
