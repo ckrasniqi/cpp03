@@ -24,12 +24,12 @@ DiamondTrap::DiamondTrap( const DiamondTrap &other ) : ClapTrap(other), ScavTrap
 }
 
 DiamondTrap &DiamondTrap::operator=( const DiamondTrap &other ){
-	std::cout << "DiamondTrap's copy assignment operator called" << std::endl;
 	if (this != &other){
 		ClapTrap::operator=(other);
 		this->_name = other._name;
 	}
 	return *this;
+	std::cout << "DiamondTrap's copy assignment operator called" << std::endl;
 }
 
 void DiamondTrap::attack( const std::string &target ){
