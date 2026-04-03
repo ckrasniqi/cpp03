@@ -12,9 +12,9 @@ DiamondTrap::DiamondTrap() : ClapTrap("Default_clap_name"), ScavTrap(), FragTrap
 DiamondTrap::DiamondTrap( std::string name ) : ClapTrap(name + "_clap_name"), ScavTrap(name), FragTrap(name){
 	_type = "DiamondTrap";
 	_name = name;
-	_hitPoints = 100;
-	_energyPoints = 50;
-	_attackDamage = 30;
+	_hitPoints = FragTrap::_hitPoints;
+	_energyPoints = ScavTrap::_energyPoints;
+	_attackDamage = FragTrap::_attackDamage;
 	std::cout << "DiamondTrap's parameterized constructor called!" << std::endl;
 }
 
@@ -28,8 +28,8 @@ DiamondTrap &DiamondTrap::operator=( const DiamondTrap &other ){
 		ClapTrap::operator=(other);
 		this->_name = other._name;
 	}
-	return *this;
 	std::cout << "DiamondTrap's copy assignment operator called" << std::endl;
+	return *this;
 }
 
 void DiamondTrap::attack( const std::string &target ){
